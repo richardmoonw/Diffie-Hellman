@@ -1,4 +1,5 @@
 import React from 'react';
+import * as bigintCryptoUtils from 'bigint-crypto-utils'
 import './App.css';
 import { Container, Row, Col, InputGroup, FormControl, Button, Jumbotron } from 'react-bootstrap';
 
@@ -66,21 +67,14 @@ class App extends React.Component {
     var alpha = parseInt(this.state.public_alpha);
     var q = parseInt(this.state.public_q);
     var x = parseInt(this.state.private_x); 
-    var y = alpha % q;
-    if(x === 1){
-      this.setState({
-        public_y: y
-      })
-    }
-    else if(x >= 2){
-      // Fast exponentiation
-      for(var i=2; i<=x; i++){
-        y = (y * (alpha % q)) % q;
-      }
-      this.setState({
-        public_y: y
-      })
-    }
+
+    // Fast exponentiation
+    var y = bigintCryptoUtils.modPow(alpha, x, q)
+    y = parseInt(y)
+
+    this.setState({
+      public_y: y
+    })
   }
 
   // Function used to calculate the key given Q, X and other's Y.
@@ -89,21 +83,14 @@ class App extends React.Component {
     var q = parseInt(this.state.public_q);
     var x = parseInt(this.state.private_x);
     var y = parseInt(this.state.public_y2);
-    var key = y % q;
-    if(x === 1){
-      this.setState({
-        public_y: y
-      })
-    }
-    else if(x >= 2){
-      // Fast exponentiation
-      for(var i=2; i<=x; i++){
-        key = (key * (y % q)) % q;
-      }
-      this.setState({
-        shared_key: key
-      })
-    }
+    
+    // Fast exponentiation
+    var key = bigintCryptoUtils.modPow(y, x, q);
+    key = parseInt(key);
+
+    this.setState({
+      shared_key: key
+    })
   }
 
   render() {
@@ -204,7 +191,7 @@ class App extends React.Component {
               </Col>
             </Row>
           </Jumbotron>
-          
+
         </Container>
       </>
     );
