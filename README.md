@@ -8,9 +8,9 @@ Implement the Diffie-Hellman protocol in JavaScript. Diffie-Hellman is a method 
 - Alpha and Q are both publicly available numbers. Users pick private values X1 and X2 and then generate a key and exchange it publicly, the opposite person receives the key and from that generates a secret key after which they have the same secret key to encrypt.
 
 ### Formulas:
-- Public variables: $$\ \alpha and q $$.
-- Private variables: $$\ X_{1} and X_{2} for 1 \leq X_{1|2} \leq q$$.
-- $$\ y = \alpha^(X_{1|2}) mod q $$.
+- Public variables: $$ \alpha and q $$.
+- Private variables: $$ X_{1} and X_{2} for 1 \leq X_{1|2} \leq q $$.
+- $$ y = \alpha^(X_{1|2}) mod q $$.
 - 
 
 
