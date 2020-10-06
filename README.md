@@ -1,3 +1,20 @@
+# Diffie-Hellman Cryptographic Protocol
+
+## Requirements:
+Implement the Diffie-Hellman protocol in JavaScript. Diffie-Hellman is a method of securely exchanging cryptographic keys over a public channel.
+
+### Considerations:
+- The algorithm considers 4 main variables: a public Alpha and Q, and two private X's.
+- Alpha and Q are both publicly available numbers. Users pick private values X1 and X2 and then generate a key and exchange it publicly, the opposite person receives the key and from that generates a secret key after which they have the same secret key to encrypt.
+
+### Formulas:
+- Public variables: $$\ \alpha and q $$.
+- Private variables: $$\ X_{1} and X_{2} for 1 \leq X_{1|2} \leq q$$.
+- $$\ y = \alpha^(X_{1|2}) mod q $$.
+- 
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
